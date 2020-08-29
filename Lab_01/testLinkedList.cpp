@@ -33,40 +33,40 @@ int main() {
     cout << endl;
 
     // lab01 - make all of the following test work correctly
-//     list.deleteAll(num);
+    list.deleteAll(num);
 
-//     cout << "List after deleting all occurrences of " << num << endl;
+    cout << "List after deleting all occurrences of " << num << endl;
 
-//     list.print();
-//     cout << endl;
-//     cout << "Length of the list: " << list.length() << endl;
+    list.print();
+    cout << endl;
+    cout << "Length of the list: " << list.length() << endl;
 
-//     list.deleteSmallest();
-//     cout << "List after deleting the smallest element" << endl;
+    /*list.deleteSmallest();
+    cout << "List after deleting the smallest element" << endl;
 
-//     list.print();
-//     cout << endl;
-//     cout << "Length of the list: " << list.length() << endl;
+    list.print();
+    cout << endl;
+    cout << "Length of the list: " << list.length() << endl;
 
-//     int k;
+    int k;
 
-//     cout << "Enter the position of the item to be retrieved: " << endl;
-//     cin >> k;
-//     cout << endl;
+    cout << "Enter the position of the item to be retrieved: " << endl;
+    cin >> k;
+    cout << endl;
 
-//     int temp = list.getKThElement(k);
+    int temp = list.getKThElement(k);
 
-//     cout << "Item at position " << k << " = " << temp << endl;
+    cout << "Item at position " << k << " = " << temp << endl;
 
-//     cout << "Enter the position of the item to be removed: " << endl;
-//     cin >> k;
-//     cout << endl;
+    cout << "Enter the position of the item to be removed: " << endl;
+    cin >> k;
+    cout << endl;
 
-//     list.deteteKthElement(k);
+    list.deteteKthElement(k);
 
-//     cout << "List after removing the element at position " << k << "." << endl;
-//     list.print();
-//     cout << endl;
+    cout << "List after removing the element at position " << k << "." << endl;
+    list.print();
+    cout << endl;*/
 
     return 0;
 }

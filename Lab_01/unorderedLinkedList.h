@@ -36,6 +36,12 @@ public:
     //               first points to the first node, last
     //               points to the last node of the updated
     //               list, and count is decremented by 1.
+
+    void deleteAll(const Type &givenInfo);
+    //to Find and delete all occurrences of a given info from the list.
+    //Postcondition: after looping through the list once,
+    //              every info that matches the given is 
+    //              deleted from the list.
 };
 
 template <class Type>
@@ -81,7 +87,7 @@ void unorderedLinkedList<Type>::insertLast(const Type &newItem) {
     newNode->info = newItem;                //store the new item in the node
     newNode->link = nullptr;                //set the link field of newNode to nullptr
 
-    if (this->first == nullptr) {                 //if the list is empty, newNode is both the first and last node
+    if (this->first == nullptr) {           //if the list is empty, newNode is both the first and last node
         this->first = newNode;
         this->last = newNode;
         this->count++;                      //increment count
@@ -134,6 +140,60 @@ void unorderedLinkedList<Type>::deleteNode(const Type &deleteItem) {
             } else {
                 cout << "The item to be deleted is not in " << "the list." << endl;
             }
+        }
+    }
+}
+
+template <class Type>
+void unorderedLinkedList<Type>::deleteAll(const Type &givenInfo) {
+    nodeType<Type> *current;                //pointer to traverse the list
+    nodeType<Type> *trailCurrent;           //pointer just before current
+    bool found;
+
+    if (this->first == nullptr) {                 //Case 1; the list is empty.
+        cout << "Cannot delete from an empty list." << endl;
+    } else {
+        if (this->first->info == givenInfo)      //Case 2
+        {
+            current = this->first;
+            this->first = this->first->link;
+            this->count--;
+            if (this->first == nullptr) //the list has only one node
+                this->last = nullptr;
+
+            trailCurrent->link = current->link;
+            this->count--;
+
+            if (this->last == current) {          //node to be deleted was the last node
+                this->last = trailCurrent;        //update the value of last
+            }
+            delete current;
+        } else {                          //search the list for the node with the given info
+            found = false;
+            trailCurrent = this->first;         //set trailCurrent to point to the first node
+            current = this->first->link;        //set current to point to the second node
+              
+            while (current != nullptr) {       // actual search portion
+                if (current->info != givenInfo) {
+                    trailCurrent = current;
+                    current = current->link;
+                } else {
+                    if (found == false) { found = true; }
+                    trailCurrent->link = current->link;
+                    this->count--;
+
+                    if (this->last == current) {          //node to be deleted was the last node
+                        this->last = trailCurrent;        //update the value of last
+                    }
+                    delete current;                       //delete the node from the list
+                }
+
+                cout << "end of loop,,, repeating\n" << endl;           
+            }
+
+            if (found == false) {
+                cout << "The item to be deleted is not in " << "the list." << endl;
+            }  
         }
     }
 }

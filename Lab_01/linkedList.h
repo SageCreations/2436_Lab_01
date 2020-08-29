@@ -86,7 +86,7 @@ bool linkedListIterator<Type>::operator!=(
     return (current != right.current);
 }
 
-//*****************  class linkedListType   ****************
+//*****************  class linkedListType   ***********************************
 
 template <class Type>
 class linkedListType {
@@ -158,6 +158,12 @@ class linkedListType {
     //               first points to the first node, last
     //               points to the last node of the updated
     //               list, and count is decremented by 1.
+
+    virtual void deleteAll(const Type& givenInfo) = 0;
+    // to Find and delete all occurrences of a given info from the list.
+    // Postcondition: after looping through the list once,
+    //               every info that matches the given is 
+    //               deleted from the list.
 
     linkedListIterator<Type> begin();
     // Function to return an iterator at the begining of the
