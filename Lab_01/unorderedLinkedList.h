@@ -1,3 +1,5 @@
+//Edited by Edward Cruz on 8/28/2020.
+
 #ifndef H_UnorderedLinkedList
 #define H_UnorderedLinkedList
 
@@ -42,6 +44,12 @@ public:
     //Postcondition: after looping through the list once,
     //              every info that matches the given is 
     //              deleted from the list.
+
+    void deleteSmallest();
+    //To find and delete the smallest info within the list.
+    //Postcondition: after going through the list, the 
+    //              smallest node that was found and stored
+    //              gets deleted from the list.
 };
 
 template <class Type>
@@ -149,6 +157,7 @@ void unorderedLinkedList<Type>::deleteAll(const Type &givenInfo) {
     nodeType<Type> *current;                //pointer to traverse the list
     nodeType<Type> *trailCurrent;           //pointer just before current
     nodeType<Type> *toBeDeleted;            //pointer to be set as deleted
+    bool found = false;
 
     if (this->first == nullptr) {                 //Case 1; the list is empty.
         cout << "Cannot delete from an empty list." << endl;
@@ -163,6 +172,7 @@ void unorderedLinkedList<Type>::deleteAll(const Type &givenInfo) {
             }
             toBeDeleted = current;
             delete toBeDeleted;
+            found = true;
         }
         // continues through the rest of the list.
         trailCurrent = this->first;         //set trailCurrent to point to the first node
@@ -186,9 +196,18 @@ void unorderedLinkedList<Type>::deleteAll(const Type &givenInfo) {
                 current = current->link;
 
                 delete toBeDeleted;                 //delete the node from the list (was 'current')
+                found = true;
             }
         }
+        if (!found) {
+            cout << "The item to be deleted is not in " << "the list." << endl;
+        }
     }
+}
+
+template <class Type>
+void unorderedLinkedList<Type>::deleteSmallest() {
+    
 }
 
 #endif

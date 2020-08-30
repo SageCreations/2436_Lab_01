@@ -1,3 +1,5 @@
+//Edited by Edward Cruz on 8/28/2020.
+
 #ifndef H_LinkedListType
 #define H_LinkedListType
 
@@ -161,9 +163,15 @@ class linkedListType {
 
     virtual void deleteAll(const Type& givenInfo) = 0;
     // to Find and delete all occurrences of a given info from the list.
-    // Postcondition: after looping through the list once,
-    //               every info that matches the given is 
+    // Postcondition: as it goes through the list, every
+    //               info that matches the given is 
     //               deleted from the list.
+
+    virtual void deleteSmallest() = 0;
+    // To find and delete the smallest info within the list.
+    // Postcondition: after going through the list, the 
+    //               smallest node that was found and stored
+    //               gets deleted from the list.
 
     linkedListIterator<Type> begin();
     // Function to return an iterator at the begining of the

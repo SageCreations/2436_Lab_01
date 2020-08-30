@@ -2,6 +2,8 @@
 // Lab01 - add described functionality to testLinkedList
 // sample input : 22 34 56 2 89 90 0 14 56 11 43 55 -999
 
+//Edited by Edward Cruz on 8/28/2020.
+
 #include <iostream>
 
 #include "unorderedLinkedList.h"
@@ -34,7 +36,6 @@ int main() {
 
     // lab01 - make all of the following test work correctly
     list.deleteAll(num);
-    //list.deleteNode(num);
 
     cout << "List after deleting all occurrences of " << num << endl;
 
@@ -42,14 +43,14 @@ int main() {
     cout << endl;
     cout << "Length of the list: " << list.length() << endl;
 
-    /*list.deleteSmallest();
+    list.deleteSmallest();
     cout << "List after deleting the smallest element" << endl;
 
     list.print();
     cout << endl;
     cout << "Length of the list: " << list.length() << endl;
 
-    int k;
+    /*int k;
 
     cout << "Enter the position of the item to be retrieved: " << endl;
     cin >> k;
