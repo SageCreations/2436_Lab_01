@@ -148,52 +148,45 @@ template <class Type>
 void unorderedLinkedList<Type>::deleteAll(const Type &givenInfo) {
     nodeType<Type> *current;                //pointer to traverse the list
     nodeType<Type> *trailCurrent;           //pointer just before current
-    bool found;
+    nodeType<Type> *toBeDeleted;            //pointer to be set as deleted
 
     if (this->first == nullptr) {                 //Case 1; the list is empty.
         cout << "Cannot delete from an empty list." << endl;
     } else {
-        if (this->first->info == givenInfo)      //Case 2
+        if (this->first->info == givenInfo)      //Case 2 (checks the first node)
         {
             current = this->first;
             this->first = this->first->link;
             this->count--;
-            if (this->first == nullptr) //the list has only one node
+            if (this->first == nullptr) { //the list has only one node
                 this->last = nullptr;
-
-            trailCurrent->link = current->link;
-            this->count--;
-
-            if (this->last == current) {          //node to be deleted was the last node
-                this->last = trailCurrent;        //update the value of last
             }
-            delete current;
-        } else {                          //search the list for the node with the given info
-            found = false;
-            trailCurrent = this->first;         //set trailCurrent to point to the first node
-            current = this->first->link;        //set current to point to the second node
-              
-            while (current != nullptr) {       // actual search portion
-                if (current->info != givenInfo) {
+            toBeDeleted = current;
+            delete toBeDeleted;
+        }
+        // continues through the rest of the list.
+        trailCurrent = this->first;         //set trailCurrent to point to the first node
+        current = this->first->link;        //set current to point to the second node
+
+        while (current != nullptr ) {
+            if (current->info != givenInfo) {
                     trailCurrent = current;
                     current = current->link;
-                } else {
-                    if (found == false) { found = true; }
-                    trailCurrent->link = current->link;
-                    this->count--;
+            } else {
+                trailCurrent->link = current->link;
+                this->count--;
 
-                    if (this->last == current) {          //node to be deleted was the last node
-                        this->last = trailCurrent;        //update the value of last
-                    }
-                    delete current;                       //delete the node from the list
+                if (this->last == current) {          //node to be deleted was the last node
+                    this->last = trailCurrent;        //update the value of last
                 }
+                    
+                toBeDeleted = current;              //set node to be deleted
+                    
+                trailCurrent = current;             //move pointers along
+                current = current->link;
 
-                cout << "end of loop,,, repeating\n" << endl;           
+                delete toBeDeleted;                 //delete the node from the list (was 'current')
             }
-
-            if (found == false) {
-                cout << "The item to be deleted is not in " << "the list." << endl;
-            }  
         }
     }
 }

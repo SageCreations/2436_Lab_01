@@ -34,6 +34,7 @@ int main() {
 
     // lab01 - make all of the following test work correctly
     list.deleteAll(num);
+    //list.deleteNode(num);
 
     cout << "List after deleting all occurrences of " << num << endl;
 
