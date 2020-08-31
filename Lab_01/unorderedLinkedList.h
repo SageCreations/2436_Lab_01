@@ -178,7 +178,7 @@ void unorderedLinkedList<Type>::deleteAll(const Type &givenInfo) {
         trailCurrent = this->first;         //set trailCurrent to point to the first node
         current = this->first->link;        //set current to point to the second node
 
-        while (current != nullptr ) {
+        while (current != nullptr) {
             if (current->info != givenInfo) {
                     trailCurrent = current;
                     current = current->link;
@@ -207,7 +207,37 @@ void unorderedLinkedList<Type>::deleteAll(const Type &givenInfo) {
 
 template <class Type>
 void unorderedLinkedList<Type>::deleteSmallest() {
-    
+    nodeType<Type> *current;                //pointer to traverse the list
+    nodeType<Type> *trailCurrent;           //pointer just before current
+    nodeType<Type> *smallest;
+    nodeType<Type> *saveCurrent;
+    nodeType<Type> *saveTrailCurrent;
+
+    if (this->first == nullptr) {                 //Case 1; the list is empty.
+        cout << "Cannot delete from an empty list." << endl;
+    } else {
+        trailCurrent = this->first;         //set trailCurrent to point to the first node
+        current = this->first->link;        //set current to point to the second node
+
+        smallest = trailCurrent;
+
+        while (current != nullptr) {
+            if (current->info < smallest->info) {
+                smallest = current;                 //saves the new smallest node.
+                saveCurrent = current;              //saves the place location... 
+                saveTrailCurrent = trailCurrent;    //of where the node is
+            }
+            trailCurrent = current;             //move pointers along
+            current = current->link;
+        }  
+
+        saveTrailCurrent->link = saveCurrent->link; 
+        this->count--;
+        if (this->last == saveCurrent) {          //node to be deleted was the last node
+            this->last = saveTrailCurrent;        //update the value of last
+        }
+        delete smallest;                          //delete the node from the list
+    }
 }
 
 #endif
