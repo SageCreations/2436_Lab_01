@@ -173,6 +173,18 @@ class linkedListType {
     //               smallest node that was found and stored
     //               gets deleted from the list.
 
+    int getKThElement(const Type& kItem);
+    // ?
+    // Postcondition: ?
+    //
+    //
+
+    void deteteKthElement(const Type& kItem);
+    // ?
+    // Postcondition: ?
+    //
+    //
+
     linkedListIterator<Type> begin();
     // Function to return an iterator at the begining of the
     // linked list.
@@ -356,6 +368,33 @@ const linkedListType<Type>& linkedListType<Type>::operator=(
     }  // end else
 
     return *this;
+}
+
+template<class Type>
+int linkedListType<Type>::getKThElement(const Type &kItem) {
+    assert(kItem <= count);
+
+    nodeType<Type> *current;
+    nodeType<Type> *trailCurrent;
+    int i;
+
+    if (first == nullptr) {
+        cout << "Cannot delete from an empty list." << endl;
+    } else if (kItem == 1) {
+        first = first->link;
+
+        if (first == nullptr) {
+            last = nullptr;
+        }
+    } else {
+        // left off here.
+    }
+
+}
+
+template<class Type>
+void linkedListType<Type>::deteteKthElement(const Type &kItem) {
+
 }
 
 #endif

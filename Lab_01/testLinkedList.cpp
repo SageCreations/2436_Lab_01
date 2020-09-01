@@ -50,7 +50,7 @@ int main() {
     cout << endl;
     cout << "Length of the list: " << list.length() << endl;
 
-    /*int k;
+    int k;
 
     cout << "Enter the position of the item to be retrieved: " << endl;
     cin >> k;
@@ -68,7 +68,7 @@ int main() {
 
     cout << "List after removing the element at position " << k << "." << endl;
     list.print();
-    cout << endl;*/
+    cout << endl;
 
     return 0;
 }
