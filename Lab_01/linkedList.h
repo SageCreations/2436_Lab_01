@@ -370,8 +370,30 @@ const linkedListType<Type>& linkedListType<Type>::operator=(
     return *this;
 }
 
+
+// I Edward Cruz take no credit for the next two functions, this is what the profesor had when we went over it in class.
+//Function 1 that I take no credit for.
 template<class Type>
 int linkedListType<Type>::getKThElement(const Type &kItem) {
+    assert(kItem <= count);
+    
+    nodeType<Type> *current;
+
+    int i = 1;
+
+    current = this->first;
+
+    while (i < kItem) {
+        current = current->link;
+        i++;
+    }
+
+    return current->info;
+}
+
+//Function 2 that I take no credit for.
+template<class Type>
+void linkedListType<Type>::deteteKthElement(const Type &kItem) {
     assert(kItem <= count);
 
     nodeType<Type> *current;
@@ -381,20 +403,37 @@ int linkedListType<Type>::getKThElement(const Type &kItem) {
     if (first == nullptr) {
         cout << "Cannot delete from an empty list." << endl;
     } else if (kItem == 1) {
+        nodeType<Type> *temp;
+        temp = first->link;
+        
         first = first->link;
 
         if (first == nullptr) {
             last = nullptr;
         }
-    } else {
-        // left off here.
+        delete temp;
+
+    } else {                // test case 2: node to be deleted is NOT first node
+
+        nodeType<Type> *temp;
+
+        trailCurrent = first;
+        current = first->link;
+
+        i = 2;
+        while (i < kItem) {
+            trailCurrent = current;
+            current = current->link;
+            i++;
+        }
+        temp = current;
+
+        trailCurrent->link = current->link;
+        if(current == last) {
+            last = trailCurrent;
+        }
+        delete temp;
     }
-
-}
-
-template<class Type>
-void linkedListType<Type>::deteteKthElement(const Type &kItem) {
-
 }
 
 #endif
